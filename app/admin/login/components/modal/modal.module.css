@@ -1,0 +1,97 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-card);
+  border: 1px solid var(--primary);
+  border-radius: 12px;
+  padding: 2rem;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 30px var(--border-purple);
+  z-index: 1000;
+  animation: modalAppear 0.3s ease-out;
+}
+
+/* Modal backdrop - jika ingin menambahkan overlay */
+.modal::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+.modal p {
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.modal p:first-child {
+  color: var(--error);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.modal p:last-child {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Close button (optional - bisa ditambahkan) */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text-gray);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--primary);
+  background: var(--border-purple);
+  transform: rotate(90deg);
+}
+
+/* Animation */
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .modal p:first-child {
+    font-size: 1rem;
+  }
+
+  .modal p:last-child {
+    font-size: 0.85rem;
+  }
+}
