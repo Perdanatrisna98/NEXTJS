@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; 
 import "./login.css";
 import Modal from "./components/modal/modal.module";
 
 export default function Login() {
   const [isOpenModal, setIsOpenModal] = useState(false);
-
+  const router = useRouter(); 
+  
+  const handleLogin = () => {
+    router.push("/admin/dashboard");
+  };
+  
   return (
     <main>
       <div className="login-container">
@@ -18,7 +24,7 @@ export default function Login() {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" required />
         </div>
-        <button className="btn btn-primary" onClick={() => setIsOpenModal(true)}>
+        <button className="btn btn-primary" onClick={handleLogin}>
           Let&apos;s Login
         </button>
       </div>

@@ -1,0 +1,29 @@
+:root {
+  --primary: #7c3aed;
+  --primary-dark: #6d28d9;
+  --primary-glow: rgba(124, 58, 237, 0.5);
+  --bg-dark: #000000;
+  --bg-card: #111111;
+  --text-white: #ffffff;
+  --text-gray: #a0a0a0;
+  --border-gray: #2a2a2a;
+  --border-purple: rgba(124, 58, 237, 0.3);
+  --error: #ef4444;
+}
+
+body {
+  background: rgb(255, 255, 255);
+}
+
+.container {
+    padding: 2.5rem;
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    border: 1px solid var(--border-purple);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    height: 600px;
+    max-width: 1200px;
+    color: var(--bg-dark);
+}
