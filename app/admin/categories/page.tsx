@@ -1,64 +1,42 @@
-    import { Button } from "@/components/ui/button"
-    import {
-    Card,
-    CardAction,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-    } from "@/components/ui/card"
-    // import { Input } from "@/components/ui/input"
-    // import { Label } from "@/components/ui/label"
-    import { DataTable } from "./data-table"
-import { ColumnDef } from "@tanstack/react-table"
+import { columns, Payment } from "./column"
+import { DataTable } from "./data-table"
 
-type Category = {
-  id: number
-  name: string
+async function getData(): Promise<Payment[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    {
+      id: "489e1d42",
+      amount: 250,
+      status: "processing",
+      email: "user@example.com",
+    },
+    {
+      id: "923f5a67",
+      amount: 500,
+      status: "success",
+      email: "admin@example.com",
+    },
+    {
+      id: "345g7h89",
+      amount: 75,
+      status: "failed",
+      email: "test@example.com",
+    },
+  ]
 }
 
-const columns: ColumnDef<Category>[] = [
-  {
-    accessorKey: "id",
-    header: "ID",
-  },
-  {
-    accessorKey: "name",
-    header: "Name",
-  },
-]
+export default async function DemoPage() {
+  const data = await getData()
 
-const data: Category[] = [
-  { id: 1, name: "Ruka" },
-  { id: 2, name: "Ahyeon" },
-]
-
-    export default function CategoriesPage() {
-    return (
-        <Card className="m-4">
-
-        <CardHeader>
-            <CardTitle>Login to your account</CardTitle>
-
-            <CardDescription>
-            Enter your email below to login to your account
-            </CardDescription>
-
-            <CardAction>
-            {/* <Button variant="link">Sign Up</Button> */}
-            </CardAction>
-
-        </CardHeader>
-
-        <CardContent>
-            <div className="p-4">
-            <DataTable columns={columns} data={data} />
-            </div>
-        </CardContent>
-
-        <CardFooter>
-        </CardFooter>
-        </Card>
-    )
-    }
+  return (
+    <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={data} />
+    </div>
+  )
+}
